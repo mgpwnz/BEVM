@@ -30,17 +30,15 @@ apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y -
 sleep 3
 sudo apt install wget -y &> /dev/null
 cd $HOME
-mkdir subspace_adv
+mkdir .bevm
 #download binary
 wget https://github.com/btclayer2/BEVM/releases/download/testnet-${version}/bevm-${version}-ubuntu20.04 &> /dev/null
 sleep 1
-sudo mv bevm-${version}-ubuntu20.04  /usr/local/bin/bevm-node
-sudo chmod +x /usr/local/bin/bevm-node
+sudo mv bevm-${version}-ubuntu20.04  /usr/local/bin/bevm
+sudo chmod +x /usr/local/bin/bevm
 # add var
 echo -e "\e[1m\e[32m2. Enter BEVM ADDRESS \e[0m"
 read -p "BEVM ADDRESS : " NODE_NAME
-
-echo -e "\e[1m\e[92m EVM ADDRESS: \e[0m" $NODE_NAME
 
 sleep 1
 #create service node
@@ -50,7 +48,7 @@ Description=BEVM Node Service
 [Service]
 Type=simple
 User=$USER
-ExecStart=/usr/local/bin/bevm-node  ---chain=testnet --name="$NODE_NAME" --pruning=archive --telemetry-url "wss://telemetry.bevm.io/submit 0"
+ExecStart=bevm  --chain=testnet --name="$NODE_NAME" --base-path=/root/.bevm --pruning=archive --telemetry-url "wss://telemetry.bevm.io/submit 0"
 Restart=always
 RestartSec=0
 
@@ -77,8 +75,8 @@ case "$response" in
     [yY][eE][sS]|[yY]) 
     sudo systemctl disable bevm.service
     sudo rm /etc/systemd/system/bevm.service 
-    sudo rm -rf /root/bevm_node
-    sudo rm /usr/local/bin/bevm-node
+    sudo rm -rf /root/.bevm
+    sudo rm /usr/local/bin/bevm
     echo "Done"
     cd $HOME
     ;;
@@ -94,8 +92,8 @@ sudo apt update &> /dev/null
 #download cli
 wget https://github.com/btclayer2/BEVM/releases/download/testnet-${version}/bevm-${version}-ubuntu20.04 &> /dev/null
 sleep 1
-sudo mv bevm-${version}-ubuntu20.04 /usr/local/bin/bevm-node
-sudo chmod +x /usr/local/bin/bevm-node
+sudo mv bevm-${version}-ubuntu20.04 /usr/local/bin/bevm
+sudo chmod +x /usr/local/bin/bevm
 sleep 1
 # Enabling services
     sudo systemctl daemon-reload
