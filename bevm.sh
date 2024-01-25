@@ -34,12 +34,11 @@ mkdir subspace_adv
 #download binary
 wget https://github.com/btclayer2/BEVM/releases/download/testnet-${version}/bevm-${version}-ubuntu20.04 &> /dev/null
 sleep 1
-mkdir bevm_node
-sudo mv bevm-${version}-ubuntu20.04 /roo/bevm_node/bevm
-sudo chmod +x /root/bevm_node/bevm
+sudo mv bevm-${version}-ubuntu20.04  /usr/local/bin/bevm-node
+sudo chmod +x /usr/local/bin/bevm-node
 # add var
-echo -e "\e[1m\e[32m2. Enter BEVM EVM ADDRESS \e[0m"
-read -p "EVM ADDRESS : " NODE_NAME
+echo -e "\e[1m\e[32m2. Enter BEVM ADDRESS \e[0m"
+read -p "BEVM ADDRESS : " NODE_NAME
 
 echo -e "\e[1m\e[92m EVM ADDRESS: \e[0m" $NODE_NAME
 
@@ -51,7 +50,7 @@ Description=BEVM Node Service
 [Service]
 Type=simple
 User=$USER
-ExecStart=/root/bevm_node/bevm  ---chain=testnet --name="$NODE_NAME" --pruning=archive --telemetry-url "wss://telemetry.bevm.io/submit 0"
+ExecStart=/usr/local/bin/bevm-node  ---chain=testnet --name="$NODE_NAME" --pruning=archive --telemetry-url "wss://telemetry.bevm.io/submit 0"
 Restart=always
 RestartSec=0
 
@@ -79,6 +78,7 @@ case "$response" in
     sudo systemctl disable bevm.service
     sudo rm /etc/systemd/system/bevm.service 
     sudo rm -rf /root/bevm_node
+    sudo rm /usr/local/bin/bevm-node
     echo "Done"
     cd $HOME
     ;;
@@ -94,8 +94,8 @@ sudo apt update &> /dev/null
 #download cli
 wget https://github.com/btclayer2/BEVM/releases/download/testnet-${version}/bevm-${version}-ubuntu20.04 &> /dev/null
 sleep 1
-sudo mv bevm-${version}-ubuntu20.04 /roo/bevm_node/bevm
-sudo chmod +x /root/bevm_node/bevm
+sudo mv bevm-${version}-ubuntu20.04 /usr/local/bin/bevm-node
+sudo chmod +x /usr/local/bin/bevm-node
 sleep 1
 # Enabling services
     sudo systemctl daemon-reload
