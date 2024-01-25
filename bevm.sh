@@ -48,7 +48,7 @@ Description=BEVM Node Service
 [Service]
 Type=simple
 User=$USER
-ExecStart=bevm  --chain=testnet --name=$NODE_NAME --base-path=/root/.bevm --pruning=archive --telemetry-url 'wss://telemetry.bevm.io/submit 0'
+ExecStart=bevm  --chain=testnet --port=30444 --name="$NODE_NAME --base-path=/root/.bevm --pruning=archive --telemetry-url 'wss://telemetry.bevm.io/submit 0'
 Restart=always
 RestartSec=0
 
@@ -99,7 +99,7 @@ sleep 1
     sudo systemctl daemon-reload
 # Starting services
     sudo systemctl restart bevm.service
-echo -e "Your subspace node \e[32mUpdate\e[39m!"
+echo -e "Your BEVM node \e[32mUpdate\e[39m!"
 cd $HOME
 }
 # Actions
