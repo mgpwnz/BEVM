@@ -73,6 +73,7 @@ uninstall() {
 read -r -p "You really want to delete the node? [y/N] " response
 case "$response" in
     [yY][eE][sS]|[yY]) 
+    sudo systemctl stop bevm.service
     sudo systemctl disable bevm.service
     sudo systemctl daemon-reload
     sudo rm /etc/systemd/system/bevm.service 
