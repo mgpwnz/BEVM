@@ -51,7 +51,7 @@ Description=BEVM Node Service
 [Service]
 Type=simple
 User=$USER
-ExecStart=bevm  --chain=testnet --port=30444 --name=$NODE_NAME --base-path=/root/.bevm --pruning=archive 
+ExecStart=bevm  --chain=testnet --port=30444 --name=$NODE_NAME --base-path=/root/.bevm --pruning=archive --telemetry-url 'wss://telemetry.bevm.io/submit 0'
 Restart=always
 RestartSec=0
 
