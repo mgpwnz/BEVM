@@ -37,7 +37,7 @@ wget https://github.com/btclayer2/BEVM/releases/download/testnet-${version}/bevm
 tar -xvf $HOME/bevm-${version}-ubuntu20.04-x86_64.tar.gz
 rm -rf $HOME/bevm-${version}-ubuntu20.04-x86_64.tar.gz
 sleep 1
-sudo mv bevm-${version}  /usr/local/bin/bevm
+sudo mv $HOME/bevm-${version}  /usr/local/bin/bevm
 sudo chmod +x /usr/local/bin/bevm
 # add var
 echo -e "\e[1m\e[32m2. Enter BEVM ADDRESS \e[0m"
@@ -100,7 +100,7 @@ wget https://github.com/btclayer2/BEVM/releases/download/testnet-${version}/bevm
 tar -xvf $HOME/bevm-${version}-ubuntu20.04-x86_64.tar.gz
 rm -rf $HOME/bevm-${version}-ubuntu20.04-x86_64.tar.gz
 sleep 1
-sudo mv bevm-${version} /usr/local/bin/bevm
+sudo mv $HOME/bevm-${version} /usr/local/bin/bevm
 sudo chmod +x /usr/local/bin/bevm
 sleep 1
 # Enabling services
