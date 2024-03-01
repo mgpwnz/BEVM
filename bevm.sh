@@ -1,7 +1,7 @@
 #!/bin/bash
 # Default variables
 function="install"
-version=v0.1.3
+version=v0.1.4
 # Options
 option_value(){ echo "$1" | sed -e 's%^--[^=]*=%%g; s%^-[^=]*=%%g'; }
 while test $# -gt 0; do
