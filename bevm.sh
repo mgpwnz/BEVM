@@ -33,7 +33,7 @@ cd $HOME
 mkdir .bevm
 #download binary
 #wget https://github.com/btclayer2/BEVM/releases/download/testnet-${version}/bevm-${version}-ubuntu20.04 &> /dev/null
-wget https://github.com/btclayer2/BEVM/releases/download/testnet-${version}/bevm-${version}-ubuntu20.04-x86_64.tar.gz && \
+wget https://github.com/btclayer2/BEVM/releases/download/${version}/bevm-${version}-ubuntu20.04-x86_64.tar.gz && \
 tar -xvf $HOME/bevm-${version}-ubuntu20.04-x86_64.tar.gz
 rm -rf $HOME/bevm-${version}-ubuntu20.04-x86_64.tar.gz
 sleep 1
