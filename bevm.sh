@@ -51,20 +51,9 @@ Description=BEVM Node Service
 [Service]
 Type=simple
 User=$USER
-ExecStart=bevm   --name $NODE_NAME \
-  --base-path=/root/.bevm \
-  --chain testnet \
-  --db-cache 2048 \
-  --telemetry-url 'wss://telemetry-testnet.bevm.io/submit 1' \
-  --port 30333 \
-  --rpc-port 8087 \
-  --rpc-methods Unsafe \
-  --validator \
-  --no-mdns \
-  --unsafe-rpc-external \
-  --offchain-worker when-authority
+ExecStart=bevm  --chain=testnet --port=30444 --name=$NODE_NAME --base-path=/root/.bevm --pruning=archive --telemetry-url 'wss://telemetry.bevm.io/submit 0' \
 Restart=always
-RestartSec=120
+RestartSec=0
 
 [Install]
 WantedBy=multi-user.target
